@@ -1,0 +1,295 @@
+<html>
+<head>
+<title>Student Management Portal</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="student.css">
+
+</head>
+<body>
+
+
+<!--  header code  -->
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="navbar-header">
+  <a class="navbar-brand" href="studentmanagementportal.html">Student Management Portal</a>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+<li class="active"><a href="#">HOME</a></li>
+          </ul>
+           
+       
+        <ul class="nav navbar-nav navbar-right">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search name here" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </ul>        
+    </div>
+</nav>
+<!--  header end's here    -->
+
+ <form id = "student" name="student">    
+ <h3 class="Thin" font-family="Bookman"><I>Enter Student Details :</I></h3>
+        <br><br>
+        &nbsp;&nbsp;&nbsp;Name: <input id = "name" name = "name" type = "text">&nbsp;&nbsp;&nbsp;
+		 RollNo: <input id = "rollno" name = "rollno" type = "text">&nbsp;&nbsp;&nbsp;
+		  Passout Year: <input id = "year" name = "year" type = "text">&nbsp;&nbsp;&nbsp;
+		   Stream: <input id = "stream" name = "stream" type = "text">&nbsp;&nbsp;&nbsp;
+       
+        <br><br>
+       <div class="button">
+        <input id = "button1" type = "button" value = " DELETE STUDENT DETAILS" onclick = "del()">&nbsp;&nbsp;&nbsp;
+        <input id = "button1" type = "button" value = " ADD STUDENT DETAILS" onclick = "AddData()">&nbsp;&nbsp;&nbsp;
+        <input id = "button1" type = "button" value = " EDIT STUDENT DETAILS" onclick="editData()"></div>&nbsp;&nbsp;&nbsp;
+		
+    </form>
+	
+
+
+
+<div id = "tab">
+<h3>Student Details:</h3>
+        <table class="table table-stripped" id = "list">
+           
+                <tr>
+                    <td>NAME</td>
+                    <td>Rollno</td>
+                    <td>Passout Year</td>
+                    <td>Stream</td>
+					
+                  
+                </tr>
+           
+
+            <tbody>
+
+            </tbody>
+        </table>
+</div>
+
+
+
+
+<script>
+function AddData() {
+var j,r,k,count=0,i,flag=0;
+var arr=[];
+    var x = document.getElementById("rollno").value;
+    var y = document.getElementById("name").value;
+   var z = document.getElementById("year").value;
+    var w = document.getElementById("stream").value;
+	if( document.student.name.value == "" )
+   {
+     alert( "Please provide your Name!" );
+     document.student.name.focus() ;
+     return false;
+   }
+   if( document.student.rollno.value == "" )
+   {
+     alert( "Please provide your RollNo!" );
+     document.student.rollno.focus() ;
+     return false;
+   }
+   if( document.student.year.value == "" )
+   {
+     alert( "Please provide your passout year!" );
+     document.student.year.focus() ;
+     return false;
+   }
+   if( document.student.stream.value == "" )
+   {
+     alert( "Please provide your Stream!" );
+     document.student.stream.focus() ;
+     return false;
+   }
+    if ((parseInt(x) != (x)) && (y == parseInt(y))) {
+        alert("Wrong Value Entered");
+    } 
+	else {
+	
+	var len=document.getElementById("list").rows.length;
+	//window.alert("len: "+len);
+	 i=len;
+	//window.alert("i: "+i);
+   if(i)
+   {
+	for(j=1;j<i;j++)
+	{
+	r=document.getElementById("list").rows[j].cells;
+	
+	arr[j]=r[1].innerHTML;
+	//window.alert("arr[j]: "+arr[j]);
+	}
+	for(j=0;j<=i;j++)
+	{
+	
+		if(arr[j]==x)
+		{
+			window.alert("rollno already exist please try to enter unique rollno!!");
+			flag=1;
+		
+		}
+		
+	}
+	}
+	//window.alert("count :"+ count);
+	
+	if(i>1)
+	{
+	
+		if(flag==0)
+		{
+			var rows = "";
+			var name = document.getElementById("name").value;
+			
+			
+			var roll = document.getElementById("rollno").value;
+			var year = document.getElementById("year").value;
+			var s = document.getElementById("stream").value;
+			rows += "<td>" + name + "</td><td>" + roll + "</td><td>" + year + "</td><td>" + s + "</td>";
+			var tbody = document.querySelector("#list tbody");
+			var tr = document.createElement("tr");
+
+			tr.innerHTML = rows;
+			tbody.appendChild(tr)
+			flag=0;
+        }
+		else
+          flag=0;		
+		
+	
+	 count=0;
+	}
+	else{
+	var rows = "";
+			var name = document.getElementById("name").value;
+			
+			
+			var roll = document.getElementById("rollno").value;
+			var year = document.getElementById("year").value;
+			var s = document.getElementById("stream").value;
+			rows += "<td>" + name + "</td><td>" + roll + "</td><td>" + year + "</td><td>" + s + "</td>";
+			var tbody = document.querySelector("#list tbody");
+			var tr = document.createElement("tr");
+
+			tr.innerHTML = rows;
+			tbody.appendChild(tr)
+    }
+}
+}
+function del()
+{
+var id,flag=0;
+var r=document.getElementById("rollno").value;
+var len=document.getElementById("list").rows.length;
+for(var i=1;i<len;i++)
+{
+var c=document.getElementById("list").rows[i].cells;
+var roll=c[1].innerHTML;
+if(r==roll)
+{
+flag=1;
+id=i;
+}
+}
+if(flag==1)
+{
+if(id>0)
+document.getElementById("list").deleteRow(id);
+}
+else{
+window.alert("invalid record");
+}
+}
+function editData()
+{
+if( document.student.name.value == "" )
+   {
+     alert( "Please provide your Name!" );
+     document.student.name.focus() ;
+     return false;
+   }
+   if( document.student.rollno.value == "" )
+   {
+     alert( "Please provide your RollNo!" );
+     document.student.rollno.focus() ;
+     return false;
+   }
+   if( document.student.year.value == "" )
+   {
+     alert( "Please provide your passout year!" );
+     document.student.year.focus() ;
+     return false;
+   }
+   if( document.student.stream.value == "" )
+   {
+     alert( "Please provide your Stream!" );
+     document.student.stream.focus() ;
+     return false;
+   }
+var id,flag=0;
+var r=document.getElementById("rollno").value;
+var len=document.getElementById("list").rows.length;
+for(var i=1;i<len;i++)
+{
+var c=document.getElementById("list").rows[i].cells;
+var roll=c[1].innerHTML;
+if(r==roll)
+{
+flag=1;
+id=i;
+}
+}
+
+	      var n = document.getElementById("name").value;
+		   var r = document.getElementById("rollno").value;
+			var y = document.getElementById("year").value;
+			var s = document.getElementById("stream").value;
+			 if(flag==1)
+			 {
+			 flag=0;
+			 if(id>0){
+			 var x = document.getElementById("list").rows[id].cells;
+    x[0].innerHTML = n;
+	x[1].innerHTML = r;
+	x[2].innerHTML = y;
+	x[3].innerHTML = s;
+	}
+	}
+	else
+	window.alert("Invalid record!!");
+		
+	
+ 
+}
+</script>
+
+
+
+
+
+
+
+<footer class="footer">
+<div class="follow"><h4><b>Follow us on:</b></h4></div> <br>
+
+    <div class="container text-center">
+        <a href="https://www.facebook.com"><i class="fa fa-facebook-square"style="font-size:24px;color:#3b5998" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/login"><i class="fa fa-twitter-square"style="font-size:24px;color: #0084b4"></i></a>
+        <a href="https://www.linkdin.com"><i class="fa fa-linkedin-square"style="font-size:24px;color: ##0077B5"></i></a>
+        <a href="https://plus.google.com/"><i class="fa fa-google-plus-square"style="font-size:24px;color: #db4a39"></i></a>
+        
+    </div>
+	
+</footer>
+</body>
+</html>
