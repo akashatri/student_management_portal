@@ -1,10 +1,12 @@
 .footer {
     background-image: linear-gradient(to right, #F4DDF1 0, #B83D6E 100%);
     padding: 10px 0;
-	 position:fixed;
+	
     bottom:0;
 	margin-right:0;
-	margin-top:100px;
+	position: relative;
+    bottom: 0;
+	margin-top:10%; 
 	width:100%;
 	
 }
@@ -36,6 +38,7 @@
 body
 {
 	overflow-x:hidden
+	
 }
 .button
 {
@@ -45,24 +48,72 @@ body
 }
 #button1
 {
-	background-color:#FA8072;
+	background-color:black;
 	padding:10px;
+	color:white;
     border-radius: 25px;
 	
+}
+.tf
+{
+	font-family:"Goudy Bookletter 1911",sans-serif;
+}
+.ch
+{
+	padding-left: 3px;
+	font-family:OCR A Std;
+	font-size:14px;
+	
+	 
+}
+#name,#rollno,#year,#stream
+{
+	border-radius:2.5px;
+border-color: white;
+
+	
+}
+.thin
+{
+padding-top: 5px;
+font-family: Brush Script MT;
 }
 #student
 {
 	text-align:center;
-	background-color:#DAF7A6  ;
+	background-color:#F0F0F0  ;
+	margin-left:5%;
+	margin-right:5%; 
 }
 #tab{
 	text-align:center;
+	
+}
+.the
+{
+	
+	font-family:Gill Sans Extrabold,monospace;
+}
+#bt7
+{
+	float:right;
+margin-bottom: 3px;
 }
 #list{
 	text-align:center;
 
-	//background-color:#99FFFF;
-	padding:10px;
-	cellspacing:10px;
+	
 	
 	}
+	.cr
+	{
+		
+	text-align:center;
+	}
+	#register
+	{
+		color:red;
+		text-align:center;
+		font-family:Gill Sans Extrabold;
+	}
+	
